@@ -1,0 +1,80 @@
+Introduction:
+
+My name is Sharique Khatri, I am currently a student at Pennsylvania State University and studying Computer Science. Over the years I have lived in may places but I was born in Mumbai, India on 11th of December 2004. The first ever school experience that I got was my nursery very close to my house the name of that place was Fun and Frolic. I have always been someone who loves to learn and carry my fun and enjoyment alongside my study. I was in touch with all my nursery teachers till I stayed in India. My next experience in terms of Academia was my first Primary School named Don Bosco High School. Only a year back when I was in my nursery I used to love to go to school but when it cam to my Primary school i hated it I used to puke almost every single day. I hated going to school. Then soon I started to make friends and it was not so bad after a few months. But when I was in my third grade one of the most horrific incident happened with me a child. A teacher hit me. After which I in no way wanted to go back to that place. Soon that grade passed and I was in my fourth grade and I met the bet teacher who I am still in touch with after 15 year, my community skills are good. 
+
+This year was the first time I was given the taste of Leadership. i was made the class monitor this kind of recognition made me confident and thus began a journey striving for excellence. 
+
+In my next year in the 5th grade I was again made the monitor because of my confidence, academics and my strong urge to help and grow with the people around me. And in my last year at Don Bosco which was the 6th grade I was bade the Green house vice-captain. This was not only a class-wide recognition but a grade wide. 
+
+I then shifted to Dubai my first ever International transfer. I started going to a school named GEMS New Millennium School. This is where I made my lifelong friends that I know will be by myside. In 7th grade since I was new to the Country and City I knew no one thus school became the only place to make new friends for me. Next year in my 8th grade I was made the Class Prefect seeing my holistic development over just one year. When I came to Dubai my English was pretty bad and was not able to communicate in a desired way but that changed in my 8th grade. Then in my 9th grade I started to explore other options where I could grow. I turned to MUN's (Model United Nations) where I received an award for the runner-up speaker. Then next year in my 10th grade I was awarded with a academic achievement of the highest marks in Math. This is when I realized that Computer Science is what I want to do and not just computer science but be someone who is good at coding, speaking and most importantly communicating. I was also made the Red-house captain
+
+In 11th grade I took my work to a whole different stage. I created a Voice-Contolled wheelchair using Arduino for the actual motor and an App using python that can be used to control the motors speed and the direction in which it is moving. It was a great success after winning our intra school round we were selected to go to the EXPO 2020 to present our product to the world. I was also given the award for the highest marks in Computer Science
+
+In my 12th grade I became the knowledge hour head of communication. My job was to talk to influencers and well known personalities and invite them to our school to have a conversation about career with students. That year was a success in terms of our career development at school
+
+Academic Background
+I am currently pursuing a Bachelor of Science in Computer Science at The Pennsylvania State University, University Park, where you’ve maintained a 3.6 GPA and plan to graduate in May 2026. During your time at Penn State, you have built a strong foundation in programming, data analysis, and software development methodologies. Prior to attending Penn State, you earned a High School Diploma from GEMS New Millennium School in Dubai, UAE, graduating with a 3.8 GPA. This international exposure has helped shape your global perspective, adaptability, and ability to work with diverse teams.
+
+Professional Experience
+1. Data Science Intern | Fourth Square, Texas (May 2024 – April 2022)
+This was my first ever internship in the USA and it was great I made a lot of connections and learnt a lot of key concepts like API usage, Cloud computing and how to use AI for applications
+
+The company Forth square is basically a company that makes GPT like models for other companies with their data.
+Gained hands-on experience with cloud computing and learned how organizations host servers on Microsoft Azure.
+Explored a variety of AI APIs such as Cohere and ChatGPT, building apps that leverage frameworks like LangChain.
+Strengthened your ability to integrate AI tools into real-world applications, effectively merging emerging technologies with practical solutions.
+
+I started working at Forth Square in May of 2024 and left in August 2024
+
+2. Grader (Computer Science) | The Pennsylvania State University, PA
+
+This is a on campus job that I was selected for after getting an A in CMPSC 360 a discrete math course. After which I applied to be the Graded for this course.
+
+Assessed student homework, quizzes, and exams, ensuring academic rigor and consistent grading practices.
+Collaborated with professors to develop grading rubrics, further honing your attention to detail, communication skills, and technical understanding of coursework.
+
+I started to work here in August 2024 right after my job at Forth Square and am currently working here as a grader.
+
+
+3. Student Scheduler | Starbucks, Pennsylvania
+
+Served in a leadership role overseeing a team of 4–5 employees for effective day-to-day operations.
+Conducted one-on-one meetings with new hires, helping integrate them into the workflow and orienting them to their schedules.
+Created detailed daily and weekly schedules, highlighting your organizational skills and ability to balance multiple responsibilities in a high-paced environment.
+
+Before being a Student Scheduler I was a Barista Trainer and prior to that I was a Barist and prior to that I was a normal employee. 
+
+So in that 1.5 years I got a total for 3 promotions which shows my strong work ethic.
+
+I started working here in March 2023 and stopped working here in May 2024
+
+4. Front-End Web Development Intern | Seera Travel Group, Dubai, UAE
+
+Supported the development of website pages using HTML, CSS, and JavaScript.
+Participated in regular team meetings, contributing pseudocode and ideas to improve functionality such as button and scrollbar features.
+Gained practical insights into version control, design best practices, and cross-functional collaboration.
+I started to work here in October 2022 and ended working in December 2022
+Projects
+Recipe Generator (May 2024)
+
+Built an AI-driven application using ChatGPT APIs to create custom recipes.
+Employed embeddings and stored them in a database for improved search and retrieval, demonstrating an ability to work with advanced NLP concepts and database management.
+Student Scheduling Program (August 2023)
+
+Developed a scheduling application in Java leveraging object-oriented programming principles.
+Focused on clean code architecture, modular design, and user-friendly features to streamline scheduling for students.
+Accomplishments & Leadership
+High-School Student-Council (2020–2022): Gained early leadership experience, collaborating with peers, organizing events, and representing student interests.
+Dean’s List in Fall 2023 & Spring 2024: Recognized for academic excellence and a consistent drive for high performance.
+Runners-up at EXPO 2020 Summit: Contributed to an innovative idea that earned recognition for creativity and feasibility among a highly competitive group of participants.
+Technical Skills
+Programming Languages: Proficient in Python, Java, C, SQL, HTML, CSS.
+Tools & Frameworks: Hands-on experience with Azure (for cloud computing), MongoDB (for database management), LangChain (for AI integrations), and Pandas (for data manipulation).
+Software & Methodologies: Comfortable working with version control systems, agile development processes, and code review.
+Personal Attributes
+Analytical Mindset: Whether working on AI-driven projects or scheduling systems, you excel at breaking down complex problems and proposing structured solutions.
+Adaptable & Culturally Aware: Your international education (Dubai to the U.S.) has refined your ability to connect with diverse teams and thrive in new environments.
+Team Player with Leadership Experience: From guiding interns at Starbucks to collaborating closely with professors, you’ve consistently taken on responsibilities that require leading groups and mentoring peers.
+Continuous Learner: Engaging with new technologies like Azure, ChatGPT, and Cohere APIs demonstrates a commitment to staying at the forefront of industry trends.
+Summary
+Overall, you are a motivated Computer Science student specializing in Data Science-related endeavors, with hands-on experience in AI/ML frameworks, cloud computing, and front-end development. Your diverse internship experiences have helped you develop a balanced skill set—spanning technical proficiency, leadership, communication, and project management. You embrace innovation and collaboration, making you well-prepared for future roles where you can leverage data-driven insights to create impactful, real-world solutions.
