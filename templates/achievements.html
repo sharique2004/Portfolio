@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Achievements - Sharique</title>
+  <!-- Link to the rest of your shared styles -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+  <!-- Inline style for background, Jinja works here -->
+  <style>
+    body {
+        min-height: 150vh;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="/">Home</a>
+    <a href="/achievements">Achievements</a>
+    <a href="/education">Education</a>
+    <a href="/experience">Experience</a>
+  </nav>
+
+  <main>
+    <h2>Achievements</h2>
+    <ul>
+      <li><h4>Dean's List (For GPA above 3.5 for the Semester)</h4>
+        <ul>
+         <li>Fall 2023</li>
+         <li>Spring 2024</li>
+         <li>Fall 2024</li> 
+        </ul></li>
+      <li><h4>Sucessfully completed a Full-Stack course with emphasis on Node, React, PostgreSQL, Web3 and DApps (2024)</h4></li>
+        <li><h4>Runners-up at EXPO 2020 summit for most innovative idea (2023)</h4></li>
+      <li><h4>High-School Student Council (2019 -2022)</h4>
+    <ul><li>Red-House Vice Captain (2019)
+    <li>Red House Captain (2020)</li>
+    <li>Edupreneure (2021)</li>
+    <li>TKH Head of Communication (2022)</li></ul></li>
+    <li><h4>Sucessfullly Completer CS50 Harvard course on AI application (2022)</h4></li>
+    </ul>
+    
+    <h2>Projects</h2>
+    <ul>
+      <li><h4>Verilog Implementation of a 5-Stage Pipelined CPU with Hazard Detection and Forwarding (2024)</h4></li>
+      <li><h4>Developed a parser for the compiling process (2024)</h4></li>
+      <li><h4>Built a recipe generator using LangChain, Python, and the Cohere API (2024)</h4></li>
+      <li><h4>Created a YouTube transcriber using LangChain and Python (2024)</h4></li>
+      <li><h4>Implemented a network application that reads and writes to disk blocks (2024)</h4></li>
+      <li><h4>Developed a scheduler builder application in Java (2023)</h4></li>
+      <li><h4>Prototyped a voice-controlled wheelchair using Arduino (2022)
+      </h4></li></ul>
+    <h2>Languages</h2>
+    <ul>
+      <li>Python</li>
+      <li>C</li>
+      <li>Java</li>
+      <li>JavaScript</li>
+      <li>HTML</li>
+      <li>CSS</li>
+      <li>SQL</li>
+      <li>Verilog</li>
+    
+    </ul>
+    <h2>Libraries</h2>
+    <ul>
+    <li>LangChain</li>
+    <li>React</li>
+    <li>Node</li>
+    <li>Express</li>
+    <li>Pandas</li>
+    </ul>
+  </main>
+</body>
+</html>
+
+<script>
+  const nav = document.querySelector('nav');
+
+  window.addEventListener('scroll', () => {
+    // If at the top, show the nav
+    if (window.scrollY === 0) {
+      nav.classList.add('show');
+    } else {
+      nav.classList.remove('show');
+    }
+  });
+
+  // Also show nav on page load if at the top
+  if (window.scrollY === 0) {
+    nav.classList.add('show');
+  }
+</script>
+

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Achievements - Sharique</title>
+  <!-- Link to the rest of your shared styles -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+
+
+</head>
+<body>
+  <nav>
+    <a href="/">Home</a>
+    <a href="/achievements">Achievements</a>
+    <a href="/education">Education</a>
+    <a href="/experience">Experience</a>
+  </nav>
+
+  <main>
+    <h2>Education</h2>
+    <h3>The Pennsylvania State University, University Park</h3>
+    <p>Bachelor of Science in Computer Science, GPA: 3.6</p>
+
+    <h3>GEMS New Millennium School, Dubai, UAE</h3>
+    <p>High School Diploma, GPA: 3.8</p>
+  </main>
+</body>
+</html>
+
+<script>
+  const nav = document.querySelector('nav');
+
+  window.addEventListener('scroll', () => {
+    // If at the top, show the nav
+    if (window.scrollY === 0) {
+      nav.classList.add('show');
+    } else {
+      nav.classList.remove('show');
+    }
+  });
+
+  // Also show nav on page load if at the top
+  if (window.scrollY === 0) {
+    nav.classList.add('show');
+  }
+</script>
+

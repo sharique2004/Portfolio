@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Achievements - Sharique</title>
+    <!-- Link to the rest of your shared styles -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  </head>
+<body>
+
+  <!-- NAVBAR (links to other pages) -->
+  <nav>
+    <a href="/">Home</a>
+    <a href="/achievements">Achievements</a>
+    <a href="/education">Education</a>
+    <a href="/experience">Experience</a>
+  </nav>
+  
+  <main>
+    <h2>Ask me about Sharique Khatri</h2>
+    <input type="text" id="question" placeholder="Type something..." />
+    <button onclick="askPersonal()">Ask</button>
+
+    <!-- Thinking Indicator (Bouncing Dots) -->
+    <div id="thinking-indicator" class="thinking">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+
+    <div id="answer-box"></div>
+    
+    <!-- 
+      Explanation block:
+      A brief overview of how your 'ingest_bio.py' and 'app.py' work together
+    -->
+    <div class="code-explanation">
+      <h3>How the Backend Works</h3>
+      <p>
+        The <strong>ingest_bio.py</strong> script reads the <em>my_bio.txt</em> file,
+        splits it into smaller chunks, and uses <em>LangChain</em> plus <em>Cohere Embeddings</em>
+        to store the text in a MongoDB Atlas collection. This lets us perform
+        similarity searches on your personal biography.
+      </p>
+      <p>
+        The <strong>app.py</strong> file is our main <em>Flask</em> application. It connects
+        to MongoDB, sets up a retrieval-based Q&amp;A system with <em>LangChain + Cohere</em>,
+        and defines the routes (like <code>/ask</code>) to respond with answers
+        about Sharique Khatri. This route calls our <code>get_personal_info</code> function,
+        which searches the stored biography chunks and then uses the language model
+        to generate a final answer.
+      </p>
+      <p>
+        Type a question in the input box above, and the backend will:
+      </p>
+      <ul>
+        <li>Search your biography's vector store for relevant context</li>
+        <li>Build a prompt using that context</li>
+        <li>Call the Cohere LLM to produce a final answer</li>
+        <li>Return the answer to the page</li>
+      </ul>
+      <p>
+        Below, you can see the raw Python code that makes all this happen.
+      </p>
+    </div>
+
+    <!-- The two code blocks side by side -->
+    <section class="code-section">
+      <div class="code-block">
+        <div class="code-block-header">ingest_bio.py</div>
+        <code>
+# ingest_bio.py
+from langchain.schema import Document
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain_cohere import ChatCohere, CohereEmbeddings
+from langchain_mongodb import MongoDBAtlasVectorSearch
+from pymongo.mongo_client import MongoClient
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+# Read file
+with open("my_bio.txt", "r", encoding="utf-8") as f:
+    bio_text = f.read()
+
+splitter = RecursiveCharacterTextSplitter(chunk_size=300, chunk_overlap=20)
+chunks = splitter.split_text(bio_text)
+
+ingestion_docs = []
+global_id = 1
+
+for c in chunks:
+    ingestion_docs.append(
+        Document(
+            page_content=c,
+            metadata={"id": global_id, "author": "ShariqueK", "source": "PersonalBio"}
+        )
+    )
+    global_id += 1
+
+# Setup embeddings + vector store
+embeddings_model = CohereEmbeddings(
+    cohere_api_key=os.getenv("COHERE_API_KEY"), 
+    model="embed-english-v3.0"
+)
+mongo_client = MongoClient(os.getenv("ATLAS_CONNECTION_STRING"))
+mywebsite_db = mongo_client["mywebsite"]
+mybio_collection = mywebsite_db["mybio"]
+
+vectorstore_mybio = MongoDBAtlasVectorSearch(
+    collection=mybio_collection,
+    embedding=embeddings_model,
+    index_name="mybio_index"
+)
+
+# Ingest
+vectorstore_mybio.add_documents(ingestion_docs)
+print("Bio ingestion complete!")
+        </code>
+      </div>
+
+      <div class="code-block">
+        <div class="code-block-header">app.py</div>
+        <code>
+import os
+from dotenv import load_dotenv
+from flask import Flask, render_template, request, jsonify
+from pymongo.mongo_client import MongoClient
+
+# LangChain + Cohere imports
+from langchain_cohere import ChatCohere
+from langchain_cohere.embeddings import CohereEmbeddings
+from langchain_mongodb import MongoDBAtlasVectorSearch
+from langchain.prompts import PromptTemplate
+from langchain_core.output_parsers import StrOutputParser
+
+# 1. Load environment variables
+load_dotenv()
+
+# 2. Initialize Cohere LLM and embeddings
+llm = ChatCohere(model="command-r-plus", temperature=0.5)
+embeddings_model = CohereEmbeddings(
+    cohere_api_key=os.getenv("COHERE_API_KEY"), 
+    model="embed-english-v3.0"
+)
+
+# 3. Connect to MongoDB
+mongo_client = MongoClient(host=os.getenv("ATLAS_CONNECTION_STRING"))
+mywebsite_db = mongo_client["mywebsite"]
+mybio_collection = mywebsite_db["mybio"]
+
+# 4. Create the vector store
+vectorstore_mybio = MongoDBAtlasVectorSearch(
+    collection=mybio_collection,
+    embedding=embeddings_model,
+    index_name="bio_index"
+)
+
+# ------------------
+# Define the function to retrieve personal info
+# ------------------
+def get_personal_info(query: str) -> str:
+    # 1. Similarity search
+    search_result = vectorstore_mybio.similarity_search(query=query)
+
+    # 2. Build context from retrieved docs
+    context = ""
+    for idx, doc in enumerate(search_result, start=1):
+        context += f"Source {idx}:\n{doc.page_content}\n\n"
+
+    # 3. Build a prompt
+    prompt_template = (
+        "You have the following context about Sharique Khatri. "
+        "Answer the user's question accurately. If the information is not in the context, say you don't know.\n\n"
+        "Context:\n{context}\n\n"
+        "User's Question:\n{query}\n\n"
+        "Your Answer:"
+    )
+    template = PromptTemplate(
+        template=prompt_template, 
+        input_variables=["context", "query"]
+    )
+
+    # 4. Prompt -> LLM -> parse (string)
+    chain = template | llm | StrOutputParser()
+    answer = chain.invoke({"context": context, "query": query})
+    return answer
+
+# ------------------
+# Create the Flask app
+# ------------------
+app = Flask(__name__)
+
+@app.route("/")
+def home():
+    return render_template("index.html")
+
+@app.route("/achievements")
+def achievements():
+    return render_template("achievements.html")
+
+@app.route("/education")
+def education():
+    return render_template("education.html")
+
+@app.route("/experience")
+def experience():
+    return render_template("experience.html")
+
+@app.route("/ask", methods=["POST"])
+def ask_question():
+    data = request.get_json()
+    user_query = data.get("query", "")
+
+    # Call the retrieval + LLM logic to get the real answer
+    answer = get_personal_info(user_query)
+
+    # Return the actual answer
+    return jsonify({"answer": answer}), 200
+
+if __name__ == "__main__":
+    # Run in debug mode for development
+    app.run(debug=True)
+        </code>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    async function askPersonal() {
+      const questionElem = document.getElementById('question');
+      const answerBox = document.getElementById('answer-box');
+      const thinkingElem = document.getElementById('thinking-indicator');
+      const userQuery = questionElem.value.trim();
+      
+      if (!userQuery) {
+        answerBox.textContent = "Please type a valid question!";
+        return;
+      }
+
+      // Show the "thinking" animation
+      thinkingElem.classList.add("active");
+      answerBox.textContent = "";
+
+      try {
+        const response = await fetch("/ask", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ query: userQuery })
+        });
+        
+        if (!response.ok) {
+          throw new Error("Network response was not OK");
+        }
+
+        const data = await response.json();
+        answerBox.textContent = data.answer;
+      } catch (error) {
+        answerBox.textContent = "Error: " + error.message;
+        console.error(error);
+      } finally {
+        // Hide the thinking animation
+        thinkingElem.classList.remove("active");
+      }
+    }
+  </script>
+</body>
+</html>
+
+<script>
+  const nav = document.querySelector('nav');
+
+  window.addEventListener('scroll', () => {
+    // If at the top, show the nav
+    if (window.scrollY === 0) {
+      nav.classList.add('show');
+    } else {
+      nav.classList.remove('show');
+    }
+  });
+
+  // Also show nav on page load if at the top
+  if (window.scrollY === 0) {
+    nav.classList.add('show');
+  }
+</script>

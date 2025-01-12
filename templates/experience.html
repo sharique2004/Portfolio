@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Achievements - Sharique</title>
+  <!-- Link to the rest of your shared styles -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+
+</head>
+<body>
+  <nav>
+    <a href="/">Home</a>
+    <a href="/achievements">Achievements</a>
+    <a href="/education">Education</a>
+    <a href="/experience">Experience</a>
+  </nav>
+
+  <main>
+    <h2>Professional Experience</h2>
+
+    <!-- Fourth Square -->
+    <h3>Data Science Intern, Fourth Square (Texas, USA)</h3>
+    <p><strong>May 2026</strong> – <em>August 2024</em></p>
+    <ul>
+      <li>Learned about cloud computing and how companies host their servers on Azure</li>
+      <li>Explored AI APIs like Cohere and ChatGPT to create apps integrating libraries like LangChain</li>
+    </ul>
+
+    <!-- PSU Grader -->
+    <h3>Grader (Computer Science), Penn State University (Pennsylvania, USA)</h3>
+    <p><strong>August 2024</strong> – <em>Current</em></p>
+    <ul>
+      <li>Evaluated homework, exams, and quizzes</li>
+      <li>Conducted and proctored exams</li>
+      <li>Collaborated with professors to create rubrics</li>
+    </ul>
+
+    <!-- Starbucks -->
+    <h3>Student Scheduler, Starbucks (Pennsylvania, USA)</h3>
+    <p><strong>April 2022</strong> – <em>May 2024</em></p>
+    <ul>
+      <li>Trained employees and led a team of 4–5 to ensure smooth shop operations</li>
+      <li>Conducted one-on-one meetings with new hires</li>
+      <li>Created daily and weekly schedules for the dining hall</li>
+    </ul>
+
+    <!-- Seera Travel Group -->
+    <h3>Front-End Web Development Intern, Seera Travel Group (Dubai, UAE)</h3>
+    <p><strong>October 2022</strong> – <em>December 2022</em></p>
+    <ul>
+      <li>Developed website pages using HTML, CSS, and JavaScript</li>
+      <li>Collaborated with team members, attended team meetings, and created pseudocode for UI elements</li>
+    </ul>
+
+  </main>
+</body>
+</html>
+<script>
+  const nav = document.querySelector('nav');
+
+  window.addEventListener('scroll', () => {
+    // If at the top, show the nav
+    if (window.scrollY === 0) {
+      nav.classList.add('show');
+    } else {
+      nav.classList.remove('show');
+    }
+  });
+
+  // Also show nav on page load if at the top
+  if (window.scrollY === 0) {
+    nav.classList.add('show');
+  }
+</script>
+
